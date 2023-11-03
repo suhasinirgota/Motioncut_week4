@@ -70,7 +70,7 @@ public class TextAdventureGameGUI extends JFrame {
 
     private void handleButton1Click() {
         if (currentStep == 0) {
-            label.setText("You step into the enchanted forest, surrounded by ancient trees covered in glowing moss.");
+            label.setText("<html>You step into the enchanted forest, surrounded by ancient trees<br> covered in glowing moss.</html>");
             label.setToolTipText("Choose 1 to follow the lights, or 2 to listen to the forest's whispers.");
             button1.setText("Follow the mysterious lights");
             button2.setText("Listen to the forest's whispers");
@@ -78,31 +78,55 @@ public class TextAdventureGameGUI extends JFrame {
         } else if (currentStep == 1) {
             int choice = getUserChoice("1 or 2");
             if (choice == 1) {
-                label.setText("As you follow the lights, you discover a hidden glen where fairies dance under the moonlight.");
+                label.setText("<html>As you follow the lights, you discover a hidden glen where <br>fairies dance under the moonlight.</html>");
                 label.setToolTipText("Choose 1 to join the fairies in their dance, or 2 to observe quietly from a distance.");
                 button1.setText("Join the fairies in their dance");
                 button2.setText("Observe quietly from a distance");
                 currentStep = 2;
             } else if (choice == 2) {
-                label.setText("You listen to the forest's whispers and feel a deep connection with the ancient trees.");
+                label.setText("<html>You listen to the forest's whispers and feel a deep connection <br>with the ancient trees.</html>");
                 button1.setVisible(false);
                 button2.setVisible(false);
                 currentStep = 99; // End of the story
             }
+            else{
+                label.setText("Invalid choice. Please select 1 or 2.");
+
+            }
+        }
+        else{
+            int choice1 = getUserChoice("1 or 2");
+            if (choice1 == 1) {
+                label.setText("<html>Enchanted by the music, you  couldn't resist joining the fairies in their dance and enjoyed the night.<br><br><hr><br><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*END OF STORY*</p></html>");
+            }
+            else if(choice1 == 2) {
+                label.setText("<html>You were captivated by the fairies dance and chose to let them be, savoring the enchanting spectacle from a distance.<br><br><hr><br><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*END OF STORY*</p></html>");
+            }
+            else{
+                label.setText("Invalid choice. Please select 1 or 2.");
+
+            }
+            
+
+            // label.setText("Invalid game state. Please restart the game.");
+             button1.setVisible(false);
+             button2.setVisible(false);
+
         }
     }
-    
+
     private void handleButton2Click() {
         if (currentStep == 0) {
-            label.setText("You decide to set up camp in a peaceful clearing and rest under the starry sky.");
+            label.setText("<html>You decide to set up camp in a peaceful clearing and rest under the starry sky.<br><br><hr><br><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*END OF STORY*</p></html>");
             button1.setVisible(false);
             button2.setVisible(false);
+            currentStep = 99; // End of the story
         }
     }
 
     private int getUserChoice(String validOptions) {
         while (true) {
-            String input = JOptionPane.showInputDialog("Are you sure you want to choose : (" + validOptions + "):");
+            String input = JOptionPane.showInputDialog("Choose (" + validOptions + "):");
             if (input == null) {
                 // User closed the dialog, treat it as cancel
                 return -1;
