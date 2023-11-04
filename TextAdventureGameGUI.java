@@ -84,34 +84,38 @@ public class TextAdventureGameGUI extends JFrame {
                 button2.setText("Observe quietly from a distance");
                 currentStep = 2;
             } else if (choice == 2) {
-                label.setText("<html>You listen to the forest's whispers and feel a deep connection <br>with the ancient trees.</html>");
+                 label.setText("Invalid game state. Please restart the game.");
                 button1.setVisible(false);
                 button2.setVisible(false);
                 currentStep = 99; // End of the story
             }
             else{
                 label.setText("Invalid choice. Please select 1 or 2.");
-
+                button1.setVisible(false);
+                button2.setVisible(false);
             }
         }
         else{
             int choice1 = getUserChoice("1 or 2");
             if (choice1 == 1) {
                 label.setText("<html>Enchanted by the music, you  couldn't resist joining the fairies in their dance and enjoyed the night.<br><br><hr><br><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*END OF STORY*</p></html>");
+                button1.setVisible(false);
+                button2.setVisible(false);
+                currentStep = 99; // End of the story
             }
             else if(choice1 == 2) {
-                label.setText("<html>You were captivated by the fairies dance and chose to let them be, savoring the enchanting spectacle from a distance.<br><br><hr><br><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*END OF STORY*</p></html>");
+                label.setText("Invalid game state. Please restart the game.");
+                button1.setVisible(false);
+                button2.setVisible(false);   
+                currentStep = 99; // End of the story
+         
             }
             else{
                 label.setText("Invalid choice. Please select 1 or 2.");
+                button1.setVisible(false);
+                button2.setVisible(false);
 
             }
-            
-
-            // label.setText("Invalid game state. Please restart the game.");
-             button1.setVisible(false);
-             button2.setVisible(false);
-
         }
     }
 
@@ -122,11 +126,50 @@ public class TextAdventureGameGUI extends JFrame {
             button2.setVisible(false);
             currentStep = 99; // End of the story
         }
+        else if (currentStep == 1) {
+            int choice = getUserChoice("1 or 2");
+            if (choice == 2) {
+                label.setText("<html>You listen to the forest's whispers and feel a deep connection <br>with the ancient trees.<br><br><hr><br><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*END OF STORY*</p></html>");
+                button1.setVisible(false);
+                button2.setVisible(false);
+                currentStep = 99; // End of the story
+             } 
+             else if(choice==1){
+                label.setText("Invalid game state. Please restart the game.");
+                button1.setVisible(false);
+                button2.setVisible(false);
+             }
+             else{
+                label.setText("Invalid choice. Please select 1 or 2.");
+                button1.setVisible(false);
+                button2.setVisible(false);
+                }  
+        }
+        else{
+            int choice1 = getUserChoice("1 or 2");
+            if (choice1 == 1) {
+                label.setText("Invalid game state. Please restart the game.");
+                button1.setVisible(false);
+                button2.setVisible(false);            }
+            else if(choice1 == 2) {
+                label.setText("<html>You were captivated by the fairies dance and chose to let them be, savoring the enchanting spectacle from a distance.<br><br><hr><br><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*END OF STORY*</p></html>");
+                button1.setVisible(false);
+                button2.setVisible(false);
+                currentStep = 99; // End of the story
+            }
+            else{
+                label.setText("Invalid choice. Please select 1 or 2.");
+                button1.setVisible(false);
+                button2.setVisible(false);
+
+            }
+        }
+        
     }
 
     private int getUserChoice(String validOptions) {
         while (true) {
-            String input = JOptionPane.showInputDialog("Choose (" + validOptions + "):");
+            String input = JOptionPane.showInputDialog("Confirm your choice:");
             if (input == null) {
                 // User closed the dialog, treat it as cancel
                 return -1;
