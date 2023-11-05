@@ -3,25 +3,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 public class TextAdventureGameGUI extends JFrame {
     private JButton button1;
     private JButton button2;
     private JLabel label;
     private int currentStep = 0;
-
     public TextAdventureGameGUI() {
         super("Text Adventure Game");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(800, 400));
-
         label = new JLabel("Welcome to the Text Adventure Game!");
         label.setFont(new Font("Arial", Font.BOLD, 24));
         label.setBorder(new EmptyBorder(20, 20, 20, 20));
         label.setForeground(new Color(51, 153, 255)); // Set custom text color
         add(label, BorderLayout.NORTH);
-
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
         button1 = createStyledButton("Explore the enchanted forest");
         button2 = createStyledButton("Set up camp and rest");
@@ -29,25 +25,21 @@ public class TextAdventureGameGUI extends JFrame {
         buttonPanel.add(button2);
         buttonPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
         add(buttonPanel, BorderLayout.CENTER);
-
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 handleButton1Click();
             }
         });
-
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 handleButton2Click();
             }
         });
-
         pack();
         setLocationRelativeTo(null);
     }
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -56,7 +48,6 @@ public class TextAdventureGameGUI extends JFrame {
             }
         });
     }
-
     private JButton createStyledButton(String text) {
         JButton button = new JButton(text);
         button.setFont(new Font("Arial", Font.BOLD, 18));
@@ -67,7 +58,6 @@ public class TextAdventureGameGUI extends JFrame {
         button.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Change cursor to hand
         return button;
     }
-
     private void handleButton1Click() {
         if (currentStep == 0) {
             label.setText("<html>You step into the enchanted forest, surrounded by ancient trees<br> covered in glowing moss.</html>");
@@ -118,7 +108,6 @@ public class TextAdventureGameGUI extends JFrame {
             }
         }
     }
-
     private void handleButton2Click() {
         if (currentStep == 0) {
             label.setText("<html>You decide to set up camp in a peaceful clearing and rest under the starry sky.<br><br><hr><br><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*END OF STORY*</p></html>");
@@ -166,7 +155,6 @@ public class TextAdventureGameGUI extends JFrame {
         }
         
     }
-
     private int getUserChoice(String validOptions) {
         while (true) {
             String input = JOptionPane.showInputDialog("Confirm your choice:");
@@ -179,11 +167,21 @@ public class TextAdventureGameGUI extends JFrame {
                 if (choice == 1 || choice == 2) {
                     return choice;
                 } else {
-                    JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid choice (1 or 2).", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, 
+                    "Invalid input. Please enter a valid choice (1 or 2).", "Invalid Input", JOptionPane.ERROR_MESSAGE);
                 }
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid choice (1 or 2).", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, 
+                "Invalid input. Please enter a valid choice (1 or 2).", "Invalid Input", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
 }
+
+
+
+
+
+
+
+
